@@ -31,12 +31,21 @@ pipeline {
     }
   }
   
-  post {
-      success {
-          slackSend(color: 'good', message: "Build Successful: ${env.JOB_NAME} [${env.BUILD_NUMBER}]")
-      }
-      failure {
-          slackSend(color: 'danger', message: "Build Failed: ${env.JOB_NAME} [${env.BUILD_NUMBER}]")
-      }
-  }
+post {
+    success {
+        slackSend(
+            channel: '#devops',
+            color: 'good',
+            message: "Build Successful: ${env.JOB_NAME} [${env.BUILD_NUMBER}]"
+        )
+    }
+
+    failure {
+        slackSend(
+            channel: '#devops',
+            color: 'danger',
+            message: "Build Failed: ${env.JOB_NAME} [${env.BUILD_NUMBER}]"
+        )
+    }
+}
 }
