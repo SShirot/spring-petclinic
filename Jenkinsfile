@@ -34,7 +34,7 @@ pipeline {
 post {
     success {
         slackSend(
-            channel: '#devops',
+            channel: '#social',
             color: 'good',
             message: "Build Successful: ${env.JOB_NAME} [${env.BUILD_NUMBER}]"
         )
@@ -42,7 +42,7 @@ post {
 
     failure {
         slackSend(
-            channel: '#devops',
+            channel: '#social',
             color: 'danger',
             message: "Build Failed: ${env.JOB_NAME} [${env.BUILD_NUMBER}]"
         )
